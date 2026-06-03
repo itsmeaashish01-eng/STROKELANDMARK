@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stroke Landmark Trials Evidence Library</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="hero" id="home">
+    <nav class="nav">
+      <div class="brand">Stroke Trials</div>
+      <div class="nav-links">
+        <a href="#input">Input</a>
+        <a href="#extraction">Extraction</a>
+        <a href="#library">Library</a>
+        <a href="#references">References</a>
+      </div>
+    </nav>
+    <section class="hero-content">
+      <p class="eyebrow">AHA/ASA + Continuum evidence organizer</p>
+      <h1>Stroke Landmark Trials Evidence Library</h1>
+      <p class="subtitle">AHA/ASA and Continuum-based trial extraction tool</p>
+      <p class="intro">Paste guideline or review text, scan for landmark stroke trials, identify missing practice-changing trials, and export an academic-style evidence table for study, fellowship teaching, journal club, or board review.</p>
+      <div class="hero-actions">
+        <a class="btn primary" href="#input">Start extraction</a>
+        <a class="btn secondary" href="#library">Browse trial library</a>
+      </div>
+    </section>
+  </header>
+
+  <main>
+    <section class="notice card">
+      <strong>Educational disclaimer:</strong> This static website is for learning and evidence organization only. It is not a clinical decision-making tool. Verify every trial, sample size, result, and citation against the original guideline and original publication before clinical, academic, or medicolegal use.
+    </section>
+
+    <section id="input" class="section grid-two">
+      <div>
+        <p class="section-kicker">Upload / Input</p>
+        <h2>Paste guideline or review text</h2>
+        <p>GitHub Pages is a static host. This version can reliably read pasted text and .txt files in your browser. PDF reading usually needs a backend or a PDF parsing library. For now, open your PDF, copy the relevant text, and paste it here.</p>
+        <div class="upload-box">
+          <label for="txtFile">Upload .txt file</label>
+          <input id="txtFile" type="file" accept=".txt,text/plain" />
+        </div>
+      </div>
+      <div class="card input-card">
+        <label for="sourceText">Guideline / review text</label>
+        <textarea id="sourceText" placeholder="Paste AHA/ASA guideline text, Continuum review text, or extracted PDF text here..."></textarea>
+        <div class="button-row">
+          <button id="scanBtn" class="btn primary">Scan text</button>
+          <button id="clearBtn" class="btn ghost">Clear</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="extraction" class="section">
+      <p class="section-kicker">Trial Extraction</p>
+      <h2>Detected vs missing landmark trials</h2>
+      <div class="stats-grid">
+        <div class="stat"><span id="totalTrials">0</span><small>Total trials in database</small></div>
+        <div class="stat success"><span id="foundTrials">0</span><small>Found in uploaded text</small></div>
+        <div class="stat warning"><span id="missingTrials">0</span><small>Important not detected</small></div>
+      </div>
+      <div class="result-panels">
+        <div class="card">
+          <h3>Found in uploaded text</h3>
+          <div id="foundList" class="pill-list empty">Paste text and click Scan.</div>
+        </div>
+        <div class="card">
+          <h3>Important trials not detected</h3>
+          <div id="missingList" class="pill-list empty">Paste text and click Scan.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="library" class="section">
+      <div class="library-header">
+        <div>
+          <p class="section-kicker">Trial Library</p>
+          <h2>Searchable evidence cards</h2>
+        </div>
+        <div class="button-row export-row">
+          <button id="copyBtn" class="btn secondary">Copy table</button>
+          <button id="csvBtn" class="btn secondary">Export CSV</button>
+          <button id="printBtn" class="btn secondary">Print</button>
+        </div>
+      </div>
+
+      <div class="filters" aria-label="Search and filters">
+        <input id="searchInput" type="search" placeholder="Search trial name, condition, result, citation..." />
+        <select id="categoryFilter"><option value="all">All categories</option></select>
+        <select id="conditionFilter"><option value="all">All conditions</option></select>
+        <select id="interventionFilter"><option value="all">All interventions</option></select>
+        <select id="topicFilter"><option value="all">All guideline topics</option></select>
+      </div>
+
+      <div id="categoryNav" class="category-nav"></div>
+      <div id="trialContainer" class="trial-container"></div>
+    </section>
+
+    <section id="references" class="section">
+      <p class="section-kicker">References</p>
+      <h2>Reference list</h2>
+      <p class="muted">References are provided in PubMed-style format when well-known. Items labeled “citation to verify” need checking against PubMed or the original article before academic use.</p>
+      <div id="referenceList" class="references"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Built for educational stroke evidence review. Static, mobile-friendly, and GitHub Pages-ready.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
